@@ -8,7 +8,7 @@ class BasePage():
     def __init__(self, driver):
         '''初始化，实例化浏览器驱动对象'''
         self.driver = driver
-        self.url = 'http://localhost/crm/index.php?m=user&a=login'   #定义url
+        self.url = 'http://192.168.1.44/crm/index.php?m=user&a=login'   #定义url
         self.timeout = 5
 
     def open(self):
