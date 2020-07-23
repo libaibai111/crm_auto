@@ -5,6 +5,7 @@ from testcase.base_test import BaseTest
 
 class ClueTestCase(BaseTest):
     def test_clue(self):
+        '''添加线索转换为客户'''
         login = LoginPage(self.driver)  # 实例化loginPage类
         u_name = 'admin'
         password = 'admin123'
