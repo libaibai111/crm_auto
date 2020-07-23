@@ -12,11 +12,8 @@ class ClueTestCase(BaseTest):
         contact = '李先生'
         customer = '李白白'
         login.login(u_name, password)  # 调用login page的login方法
-
-        clue = CluePage(self.driver)  # 调用clue_page
-
-        text = clue.ele_clue(contact,customer)  # 调用clue_page的ele_clue方法
-
+        clue = CluePage(self.driver)  # 实例化clue_page
+        text = clue.ele_clue(contact,customer)  # 实例化clue_page的ele_clue方法
         self.assertIn("添加客户成功", text)
 if __name__ == '__main__':
     unittest.main()
