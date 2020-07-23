@@ -12,7 +12,7 @@ class LoginPage(BasePage):
     login_username_text_loc = (By.NAME, 'name') #用户名定位器
     login_password_text_loc = (By.NAME, 'password') #登录密码定位器
     login_submit_loc = (By.NAME, 'submit') #登录按钮定位器
-    login_assert = (By.ID, 'searchBtn')    #断言定位器
+    login_assert = (By.XPATH,'//div[@class="container"]/div[2]/ul[2]/li[6]/a')    #断言定位器
 
     def login_username(self, uname):
         '''用户名输入框'''
@@ -36,5 +36,6 @@ class LoginPage(BasePage):
         self.login_submit() #调用点击【登录】
         time.sleep(2)
         ret = self.assert_result(self.login_assert)
+        ret = ret.strip()
         # self.close_browser()
         return ret
