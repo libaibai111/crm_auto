@@ -10,18 +10,22 @@ class AddCluePage(BasePage):
     locator_assert = (By.CLASS_NAME, 'alert.alert-success')  # 断言
 
     def ele_clickclue(self):
+        '''点击【线索】'''
         self.find_element(self.locator_clickclue).click()  # 点击【线索】
         print("点击线索")
 
     def ele_newcreate(self):
+        '''点击新建线索'''
         self.find_element(self.locator_newcreate).click()  # 点击新建线索
         print("点击新建线索")
 
     def ele_contact(self):
+        '''输入联系人名称'''
         self.find_element(self.locator_contact).send_keys('du先生')  # 输入联系人名称
         print("输入联系人名称")
 
     def ele_save(self):
+        '''点击【保存】'''
         self.find_element(self.locator_save).click()  # 点击【保存】
         print("点击保存")
 
