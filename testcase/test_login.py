@@ -1,29 +1,34 @@
-'''
-登录测试用例执行
-'''
-from page.login_page import LoginPage
-from testcase.base_test import BaseTest
-from data.data_lib import get_txt
-from model.driver import Driver
+import time
 import unittest
 
-class LoginTestCase(unittest.TestCase):
+from data.data_lib import get_txt
+from model.driver import Driver
+from page.login_page import LoginPage
+from page.xs_page import XsPage
+from testcase.base_test import BaseTest
 
-    def setUP(self):
-        '''初始化，实例化浏览器对象'''
-        # self.driver = Driver().browser_chrome()
-        # print('ssss-',self.driver)
-        print('初始化')
+
+class LoginTestCase(BaseTest):
+
+    # def setUp(self):
+    #     print('111')
+    #     self.driver = Driver().browser_chrome()
+    #     print('ssss-',self.driver)
 
     def test_loginfont_suss(self):
+        print('aaa')
         '''测试前台登录成功'''
-        login = LoginPage(self.driver)  #实例化loginPage类
+        login = LoginPage(self.driver)  # 实例化loginPage类
         file_path = r'E:\PyCharm2020(64bit)\py_workspace\crm_selenium\data\data_text.txt'
-        data = get_txt(file_path,2) #[[],[]]模式获取用户名密码
+        data = get_txt(file_path, 2)  # [[],[]]模式获取用户名密码
         u_name = data[0][0]
         password = data[0][1]
-        actual = login.login(u_name,password)   #调用login page的login方法
-        self.assertEqual(u_name, actual)    #断言
+        actual = login.login(u_name, password)  # 调用login page的login方法
+        # self.assertEqual('查询', actual)  # 断言
+        xs = XsPage(self.driver)
+        xs.xs()
+        time.sleep(5)
 
-if __name__ == '__main__':
-    unittest.main()
+
+# if __name__ == '__main__':
+#     unittest.main()
