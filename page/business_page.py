@@ -23,6 +23,8 @@ class BusinessPage(BasePage):
     locator_search_button = (By.ID, 'dosearch')
     locator_delete_all= (By.ID,'check_all')
     locator_delete_button = (By.ID,'delete')
+    locator_view_business = (By.XPATH,'//form[@id="form1"]/table/tbody/tr[1]/td[12]/a[1]')
+    locator_back_view_business = (By.XPATH,'//div[@id="tab1"]/div[1]/div/a[3]')
 
     def home_business(self):
         '''点击商机进入'''
@@ -124,6 +126,16 @@ class BusinessPage(BasePage):
         '''确认删除'''
         self.driver.switch_to.alert.accept()
 
+    def view_business(self):
+        '''点击查看商机'''
+        action = self.find_element(self.locator_view_business)
+        action.click()
+
+    def back_view_business(self):
+        '''查看商机返回'''
+        action = self.find_element(self.locator_back_view_business)
+        action.click()
+
     def business_add_flow(self,index,bname,price):
         '''添加商机流程'''
         self.create_business_cusname()
@@ -137,6 +149,10 @@ class BusinessPage(BasePage):
         self.business_price(price)
         time.sleep(1)
         self.confirm_business()
+        time.sleep(1)
+        self.view_business()
+        time.sleep(1)
+        self.back_view_business()
         time.sleep(1)
 
     def business_edit_flow(self,index,bname,price):
@@ -153,6 +169,9 @@ class BusinessPage(BasePage):
         time.sleep(1)
         self.confirm_edit_business()
         time.sleep(1)
+        self.view_business()
+        time.sleep(1)
+        self.back_view_business()
 
     def business_search_flow(self,field,condition,key):
         '''搜索商机流程'''

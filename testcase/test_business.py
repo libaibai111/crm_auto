@@ -20,7 +20,7 @@ class BusinessTestCase(base_test.BaseTest):
         busy = BusinessPage(self.driver)
         busy.home_business()
         busy.add_business()
-        busy.business_add_flow(0,'yeye','140')
+        busy.business_add_flow(0,'yiyi','140')
 
     def test_business_aedit(self):
         '''编辑商机'''
@@ -51,9 +51,9 @@ class BusinessTestCase(base_test.BaseTest):
         self.assertEqual(u_name, actual)  # 断言
         busy = BusinessPage(self.driver)
         busy.home_business()
-        busy.business_search_flow('name','contains','李')
+        busy.business_search_flow('name','contains','l')
 
-    def test_all_business_delete(self):
+    def z_all_business_delete(self):
         '''删除全部商机'''
         print('aaa')
         '''测试前台登录成功'''
