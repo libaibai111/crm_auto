@@ -14,46 +14,55 @@ class CluePage(BasePage):
     locator_assert = (By.CLASS_NAME, 'alert.alert-success')  # 断言
 
     def ele_clickclue(self):
+        '''点击【线索】'''
         self.find_element(self.locator_clickclue).click()  # 点击【线索】
         print("点击线索")
 
     def ele_newcreate(self):
+        '''点击新建线索'''
         self.find_element(self.locator_newcreate).click()  # 点击新建线索
         print("点击新建线索")
 
-    def ele_contact(self):
-        self.find_element(self.locator_contact).send_keys('李先生')  # 输入联系人名称
+    def ele_contact(self,contact):
+        '''输入联系人名称'''
+        self.find_element(self.locator_contact).send_keys(contact)  # 输入联系人名称
         print("输入联系人名称")
 
     def ele_save(self):
+        '''点击【保存】'''
         self.find_element(self.locator_save).click()  # 点击【保存】
         print("点击保存")
 
     def ele_switch(self):
+        '''点击转换'''
         self.find_element(self.locator_switch).click()  # 点击转换
         print("点击转换")
 
-    def ele_customername(self):
-        self.find_element(self.locator_customername).send_keys('李白白')  # 输入客户名称
+    def ele_customername(self,customer):
+        '''输入客户名称'''
+        self.find_element(self.locator_customername).send_keys(customer)  # 输入客户名称
         print("输入客户名称")
 
     def ele_scroll(self):
+        '''滚动窗口'''
         xy = self.find_element(self.locator_html).size
         js = "window.scroll(0,%s)" % (xy["height"])
         self.driver.execute_script(js)  # 滚动窗口
         print("窗口滚动")
 
     def ele_switchsave(self):
+        '''点击保存'''
         self.find_element(self.locator_switchsave).click()  # 点击保存
         print("点击保存")
 
-    def ele_clue(self):
+    def ele_clue(self,contact,customer):
+        '''添加线索转换为客户'''
         self.ele_clickclue()
         self.ele_newcreate()
-        self.ele_contact()
+        self.ele_contact(contact)
         self.ele_save()
         self.ele_switch()
-        self.ele_customername()
+        self.ele_customername(customer)
         self.ele_scroll()
         self.ele_switchsave()
         text = self.assert_result(self.locator_assert)
